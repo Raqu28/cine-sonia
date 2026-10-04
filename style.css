@@ -18,14 +18,48 @@ header {
 }
 
 header h1 {
-    font-size: 2.5rem;
-    color: #e50914;
+    font-size: 3rem;
+    color: #fff; /* El centro de la letra será blanco para simular un tubo de luz */
     margin-bottom: 10px;
+    font-weight: 800;
+}
+
+/* Este es el truco para el efecto Neón Rojo Brillante */
+.neon-text {
+    color: #fff;
+    text-shadow:
+        0 0 5px #ff003c,   /* Brillo interno suave */
+        0 0 10px #ff003c,  /* Brillo medio */
+        0 0 20px #ff003c,  /* Difuminado de luz */
+        0 0 40px #ff003c,  /* Resplandor exterior grande */
+        0 0 80px #ff003c;  /* Luz ambiental de fondo */
+    animation: pulsar 2s infinite alternate; /* Opcional: una leve animación de parpadeo */
+}
+
+/* Animación para que el neón tenga vida y "vibre" sutilmente */
+@keyframes pulsar {
+    0% {
+        text-shadow: 0 0 5px #ff003c, 0 0 10px #ff003c, 0 0 20px #ff003c, 0 0 40px #ff003c, 0 0 80px #ff003c;
+    }
+    100% {
+        text-shadow: 0 0 3px #b80710, 0 0 7px #b80710, 0 0 15px #b80710, 0 0 30px #b80710, 0 0 60px #b80710;
+    }
 }
 
 header p {
-    color: #aaa;
+    font-size: 1.1rem;
     margin-bottom: 20px;
+}
+
+/* Efecto Neón Rosa Brillante para el subtítulo */
+.neon-pink {
+    color: #fff; /* Centro blanco para simular el tubo de luz */
+    font-weight: 600;
+    text-shadow:
+        0 0 4px #ff00a0,   /* Brillo interno rosa */
+        0 0 8px #ff00a0,   /* Brillo medio */
+        0 0 15px #ff00a0,  /* Difuminado de luz */
+        0 0 30px #ff00a0;  /* Resplandor exterior */
 }
 
 .search-box {
