@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #141414;
+    color: #ffffff;
+    padding-bottom: 50px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, #1f1f1f 0%, #141414 100%);
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #fff; /* El centro de la letra será blanco para simular un tubo de luz */
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+/* Este es el truco para el efecto Neón Rojo Brillante */
+.neon-text {
+    color: #fff;
+    text-shadow:
+        0 0 5px #ff003c,   /* Brillo interno suave */
+        0 0 10px #ff003c,  /* Brillo medio */
+        0 0 20px #ff003c,  /* Difuminado de luz */
+        0 0 40px #ff003c,  /* Resplandor exterior grande */
+        0 0 80px #ff003c;  /* Luz ambiental de fondo */
+    animation: pulsar 2s infinite alternate; /* Opcional: una leve animación de parpadeo */
+}
+
+/* Modificamos la animación para agregar el parpadeo de luz */
+@keyframes pulsar {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 5px #ff003c, 
+            0 0 10px #ff003c, 
+            0 0 20px #ff003c, 
+            0 0 40px #ff003c, 
+            0 0 80px #ff003c;
+        color: #fff;
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+        color: #444; /* Simulamos que el tubo de luz se apaga un milisegundo */
+    }
+}
+
+header p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* Efecto Neón Rosa Brillante para el subtítulo */
+.neon-pink {
+    color: #fff; /* Centro blanco para simular el tubo de luz */
+    font-weight: 600;
+    text-shadow:
+        0 0 4px #ff00a0,   /* Brillo interno rosa */
+        0 0 8px #ff00a0,   /* Brillo medio */
+        0 0 15px #ff00a0,  /* Difuminado de luz */
+        0 0 30px #ff00a0;  /* Resplandor exterior */
+}
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#search-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+}
+
+#search-input:focus {
+    outline: 2px solid #e50914;
+}
+
+#search-button {
+    padding: 12px 24px;
+    border: 2px solid #ff003c; /* Borde rojo neón */
+    border-radius: 4px;
+    background-color: rgba(20, 20, 20, 0.8); /* Fondo oscuro translúcido */
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /* Usamos la misma animación 'pulsar' para que titile a la par de tu título */
+    animation: pulsar 2s infinite alternate; 
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #ff003c;
+    color: #fff;
+    box-shadow: 0 0 15px #ff003c; /* Brilla más fuerte cuando pasas el mouse */
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Tarjetas un poquito más anchas */
+    gap: 35px;
+    padding: 30px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movie-card {
+    background-color: #1a1a1a;
+    border-radius: 16px; /* Bordes mucho más redondeados y elegantes */
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6); /* Sombra más profunda para dar relieve */
+    border: 1px solid #2a2a2a; /* Borde sutil divisorio */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Animación de movimiento premium */
+}
+
+.movie-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Se eleva suavemente hacia arriba */
+    border-color: #ff003c; /* El borde se ilumina en rojo neón al pasar el mouse */
+    box-shadow: 0 12px 30px rgba(255, 0, 60, 0.2); /* Resplandor rojo suave de fondo */
+}
+
+.movie-card img {
+    width: 100%;
+    height: 330px; /* Imagen un poquito más alta estilo póster cinematográfico */
+    object-fit: cover;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-info span {
+    background-color: #333;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #ffc107;
+}
+
+.loading, .no-results, .error {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 20px;
+}
+/* DISEÑO DE LA VENTANA FLOTANTE (MODAL) */
+.modal {
+    display: none; /* Por defecto está escondida */
+    position: fixed;
+    z-index: 1000; /* Se asegura de quedar por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
+}
+
+.modal-content {
+    background-color: #1f1f1f;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3); /* Un leve reflejo rojo */
+    border: 1px solid #333;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #e50914; /* El botón de cerrar se pone rojo al pasar el mouse */
+}
+
+/* Diseño interno del contenido del resumen */
+#modal-details h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#modal-details p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+#modal-details .modal-meta {
+    display: flex;
+    gap: 15px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
