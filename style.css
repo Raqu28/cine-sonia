@@ -154,3 +154,63 @@ header p {
     color: #aaa;
     margin-top: 20px;
 }
+/* DISEÑO DE LA VENTANA FLOTANTE (MODAL) */
+.modal {
+    display: none; /* Por defecto está escondida */
+    position: fixed;
+    z-index: 1000; /* Se asegura de quedar por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con transparencia */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
+}
+
+.modal-content {
+    background-color: #1f1f1f;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3); /* Un leve reflejo rojo */
+    border: 1px solid #333;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #e50914; /* El botón de cerrar se pone rojo al pasar el mouse */
+}
+
+/* Diseño interno del contenido del resumen */
+#modal-details h2 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+#modal-details p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+#modal-details .modal-meta {
+    display: flex;
+    gap: 15px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
