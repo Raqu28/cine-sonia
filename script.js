@@ -12,7 +12,7 @@ const modal = document.getElementById('modal-reproductor');
 const btnCerrar = document.getElementById('btn-cerrar');
 const reproductorDestino = document.getElementById('reproductor-destino');
 
-// 🎬 CARGA AUTOMÁTICA AL ENTRAR (Sin pedir registrarse)
+// 🎬 CARGA AUTOMÁTICA AL ENTRAR (Público para todos)
 async function obtenerPeliculasPopulares() {
     try {
         const respuesta = await fetch(URL_POPULARES);
@@ -87,5 +87,5 @@ btnCerrar.addEventListener('click', () => {
 btnBuscar.addEventListener('click', () => buscarPeliculas(inputBuscar.value));
 inputBuscar.addEventListener('keypress', (e) => { if (e.key === 'Enter') buscarPeliculas(inputBuscar.value); });
 
-// 🚀 Arrancar la cartelera inmediatamente cuando cualquier persona abra la página
+// 🚀 Arrancar la cartelera de inmediato
 obtenerPeliculasPopulares();
