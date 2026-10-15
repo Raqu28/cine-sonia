@@ -27,6 +27,25 @@ header h1 {
 .neon-text {
     color: #fff;
     text-shadow: 0 0 5px #ff003c, 0 0 15px #ff003c, 0 0 35px #ff003c;
+    animation: cine-sonia-flicker 2.4s infinite;
+}
+
+@keyframes cine-sonia-flicker {
+    0%, 18%, 22%, 24%, 55%, 58%, 100% {
+        color: #fff;
+        text-shadow: 0 0 5px #ff003c, 0 0 15px #ff003c, 0 0 35px #ff003c;
+    }
+
+    20%, 23%, 56% {
+        color: #4a3841;
+        text-shadow: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .neon-text {
+        animation: none;
+    }
 }
 
 .neon-pink {
