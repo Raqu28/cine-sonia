@@ -1,8 +1,8 @@
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
 
-// 🌟 CAMBIO CLAVE: Usamos 'now_playing' para traer los últimos estrenos del cine actualizados hoy mismo
-const API_URL = `https://themoviedb.org{API_KEY}&language=es-ES&page=1`;
-const SEARCH_URL = `https://themoviedb.org{API_KEY}&language=es-ES&query=`;
+// URLs oficiales unidas de forma simple para evitar errores de símbolos
+const API_URL = 'https://themoviedb.org' + API_KEY + '&language=es-ES&page=1';
+const SEARCH_URL = 'https://themoviedb.org' + API_KEY + '&language=es-ES&query=';
 const IMAGE_URL = 'https://tmdb.org';
 
 const searchButton = document.getElementById('search-button');
@@ -12,7 +12,7 @@ const movieModal = document.getElementById('movie-modal');
 const closeModal = document.querySelector('.close-button');
 const modalDetails = document.getElementById('modal-details');
 
-// Cargar películas del momento al abrir la página de forma automática y libre
+// Cargar películas del momento al abrir la página automáticamente
 async function loadCurrentMovies() {
     try {
         resultsContainer.innerHTML = '<p class="loading">Cargando estrenos actualizados...</p>';
@@ -51,7 +51,7 @@ async function searchMovies() {
 function renderMovies(movies) {
     movies.forEach(movie => {
         const posterUrl = movie.poster_path
-            ? `${IMAGE_URL}${movie.poster_path}`
+            ? IMAGE_URL + movie.poster_path
             : 'https://placeholder.com';
 
         const movieCard = document.createElement('div');
@@ -66,9 +66,9 @@ function renderMovies(movies) {
             </div>
         `;
 
-        // 🍿 AL HACER CLIC: Abre el reproductor de la película completa en vez de la sinopsis
+        // AL HACER CLIC: Abre el reproductor de la película completa en vez de la sinopsis
         movieCard.addEventListener('click', () => {
-            const urlPeliculaCompleta = `https://vidsrc.to{movie.id}`;
+            const urlPeliculaCompleta = 'https://vidsrc.to' + movie.id;
 
             modalDetails.innerHTML = `
                 <h2 style="color: #ff007f; text-shadow: 0 0 10px #ff007f; margin-top: 0; font-size: 24px;">${movie.title}</h2>
@@ -77,7 +77,6 @@ function renderMovies(movies) {
                     <span>⭐ Puntuación: ${movie.vote_average ? movie.vote_average.toFixed(1) : '0.0'}/10</span>
                 </div>
                 
-                <!-- 🎥 Reproductor Multimedia integrado -->
                 <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 2px solid #ff007f; box-shadow: 0 0 15px #ff007f;">
                     <iframe src="${urlPeliculaCompleta}" 
                             allowfullscreen 
@@ -102,7 +101,7 @@ if (closeModal) {
     closeModal.addEventListener('click', () => {
         if (movieModal) {
             movieModal.style.display = 'none';
-            modalDetails.innerHTML = ''; // Apaga el video al cerrar el cuadro
+            modalDetails.innerHTML = ''; 
         }
     });
 }
@@ -117,5 +116,5 @@ window.addEventListener('click', (event) => {
 if (searchButton) searchButton.addEventListener('click', searchMovies);
 if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') searchMovies(); });
 
-// Arrancar la cartelera de estrenos del 2026 inmediatamente al entrar
+// Arrancar la cartelera de estrenos de inmediato
 loadCurrentMovies();
