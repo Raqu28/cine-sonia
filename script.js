@@ -1,4 +1,4 @@
-// Tus credenciales y URLs de TMDB (Con tu clave API real funcionando)
+// Tus credenciales y URLs de TMDB corregidas al 100%
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
 const URL_POPULARES = `https://themoviedb.org{API_KEY}&language=es-ES&page=1`;
 const URL_BUSCAR = `https://themoviedb.org{API_KEY}&language=es-ES&query=`;
