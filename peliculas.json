@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "titulo": "El viaje a la Luna (1902)",
+    "genero": "Ciencia Ficción",
+    "poster": "https://wikimedia.org",
+    "videoUrl": "https://archive.org"
+  },
+  {
+    "id": 2,
+    "titulo": "La noche de los muertos vivos (1968)",
+    "genero": "Terror",
+    "poster": "https://wikimedia.org",
+    "videoUrl": "https://archive.org"
+  }
+]
