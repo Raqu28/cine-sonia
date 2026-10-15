@@ -1,6 +1,6 @@
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
 
-// URLs oficiales de TMDB unificadas
+// Direcciones unidas de forma simple para que internet las lea perfecto en Argentina
 const API_URL = 'https://themoviedb.org' + API_KEY + '&language=es-MX&page=1';
 const SEARCH_URL = 'https://themoviedb.org' + API_KEY + '&language=es-MX&query=';
 const IMAGE_URL = 'https://tmdb.org';
@@ -66,9 +66,8 @@ function renderMovies(movies) {
             </div>
         `;
 
-        // 🍿 AL HACER CLIC: Abre el reproductor de la película completa directo para Argentina
+        // Al hacer clic abre el reproductor directo optimizado para Argentina
         movieCard.addEventListener('click', () => {
-            // Servidor de streaming alternativo optimizado para Latinoamérica
             const urlPeliculaCompleta = 'https://vidsrc.xyz' + movie.id;
 
             modalDetails.innerHTML = `
@@ -78,7 +77,6 @@ function renderMovies(movies) {
                     <span>⭐ Puntuación: ${movie.vote_average ? movie.vote_average.toFixed(1) : '0.0'}/10</span>
                 </div>
                 
-                <!-- 🎥 REPRODUCTOR MULTIMEDIA INTEGRADO -->
                 <div class="contenedor-video" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; border: 2px solid #ff007f; box-shadow: 0 0 15px #ff007f;">
                     <iframe src="${urlPeliculaCompleta}" 
                             allowfullscreen 
@@ -88,7 +86,7 @@ function renderMovies(movies) {
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;">
                     </iframe>
                 </div>
-                <p style="color: #aaa; font-size: 12px; margin-top: 10px; text-align: center;">💡 Nota: Si aparecen ventanas emergentes al dar Play, cerralas para continuar viendo la película.</p>
+                <p style="color: #aaa; font-size: 12px; margin-top: 10px; text-align: center;">💡 Nota: Si aparecen anuncios al dar Play, cerralos para continuar viendo la película.</p>
             `;
 
             if (movieModal) {
@@ -119,5 +117,5 @@ window.addEventListener('click', (event) => {
 if (searchButton) searchButton.addEventListener('click', searchMovies);
 if (searchInput) searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') searchMovies(); });
 
-// Arrancar los estrenos automáticamente
+// Arrancar la app de inmediato
 loadCurrentMovies();
