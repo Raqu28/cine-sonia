@@ -1,11 +1,11 @@
-// Importamos las herramientas de Firebase directamente desde internet
-import { initializeApp } from "https://gstatic.com";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://gstatic.com";
+// Importamos los módulos de Firebase desde su CDN oficial
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 // Tus datos reales de la captura de pantalla
 const firebaseConfig = {
   apiKey: "AIzaSyAWMcqYyE0MzTnFkMqa0_IA9SZPgvHM85g",
-  authDomain: "://firebaseapp.com",
+  authDomain: "cinesonia-b2eec.firebaseapp.com",
   projectId: "cinesonia-b2eec",
   storageBucket: "cinesonia-b2eec.firebasestorage.app",
   messagingSenderId: "870314567815",
@@ -18,4 +18,4 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 // Exportamos las funciones de usuarios listas para usarlas en nuestra app
-export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged };
+export { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, signOut, onAuthStateChanged };

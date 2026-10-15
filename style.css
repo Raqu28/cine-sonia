@@ -1,301 +1,267 @@
-* {
+/* ==========================================
+   🍿 ESTILOS GENERALES (FONDO OSCURO INTEGRAL)
+   ========================================== */
+body {
+    background-color: #0b050d; /* Un negro morado muy profundo */
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
-body {
-    background-color: #141414;
-    color: #ffffff;
-    padding-bottom: 50px;
-}
-
-header {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(180deg, #1f1f1f 0%, #141414 100%);
-}
-
-header h1 {
-    font-size: 3rem;
-    color: #fff; /* El centro de la letra será blanco para simular un tubo de luz */
-    margin-bottom: 10px;
-    font-weight: 800;
-}
-
-/* Este es el truco para el efecto Neón Rojo Brillante */
-.neon-text {
-    color: #fff;
-    text-shadow:
-        0 0 5px #ff003c,   /* Brillo interno suave */
-        0 0 10px #ff003c,  /* Brillo medio */
-        0 0 20px #ff003c,  /* Difuminado de luz */
-        0 0 40px #ff003c,  /* Resplandor exterior grande */
-        0 0 80px #ff003c;  /* Luz ambiental de fondo */
-    animation: pulsar 2s infinite alternate; /* Opcional: una leve animación de parpadeo */
-}
-
-/* Modificamos la animación para agregar el parpadeo de luz */
-@keyframes pulsar {
-    0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        text-shadow: 
-            0 0 5px #ff003c, 
-            0 0 10px #ff003c, 
-            0 0 20px #ff003c, 
-            0 0 40px #ff003c, 
-            0 0 80px #ff003c;
-        color: #fff;
-    }
-    20%, 24%, 55% {
-        text-shadow: none;
-        color: #444; /* Simulamos que el tubo de luz se apaga un milisegundo */
-    }
-}
-
-header p {
-    font-size: 1.1rem;
-    margin-bottom: 20px;
-}
-
-/* Efecto Neón Rosa Brillante para el subtítulo */
-.neon-pink {
-    color: #fff; /* Centro blanco para simular el tubo de luz */
-    font-weight: 600;
-    text-shadow:
-        0 0 4px #ff00a0,   /* Brillo interno rosa */
-        0 0 8px #ff00a0,   /* Brillo medio */
-        0 0 15px #ff00a0,  /* Difuminado de luz */
-        0 0 30px #ff00a0;  /* Resplandor exterior */
-}
-
-.search-box {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-#search-input {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    font-size: 1rem;
-}
-
-#search-input:focus {
-    outline: 2px solid #e50914;
-}
-
-#search-button {
-    padding: 12px 24px;
-    border: 2px solid #ff003c; /* Borde rojo neón */
-    border-radius: 4px;
-    background-color: rgba(20, 20, 20, 0.8); /* Fondo oscuro translúcido */
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    /* Usamos la misma animación 'pulsar' para que titile a la par de tu título */
-    animation: pulsar 2s infinite alternate; 
-    transition: all 0.3s ease;
-}
-
-#search-button:hover {
-    background-color: #ff003c;
-    color: #fff;
-    box-shadow: 0 0 15px #ff003c; /* Brilla más fuerte cuando pasas el mouse */
-}
-
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Tarjetas un poquito más anchas */
-    gap: 35px;
-    padding: 30px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.movie-card {
-    background-color: #1a1a1a;
-    border-radius: 16px; /* Bordes mucho más redondeados y elegantes */
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6); /* Sombra más profunda para dar relieve */
-    border: 1px solid #2a2a2a; /* Borde sutil divisorio */
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Animación de movimiento premium */
-}
-
-.movie-card:hover {
-    transform: translateY(-10px) scale(1.02); /* Se eleva suavemente hacia arriba */
-    border-color: #ff003c; /* El borde se ilumina en rojo neón al pasar el mouse */
-    box-shadow: 0 12px 30px rgba(255, 0, 60, 0.2); /* Resplandor rojo suave de fondo */
-}
-
-.movie-card img {
-    width: 100%;
-    height: 330px; /* Imagen un poquito más alta estilo póster cinematográfico */
-    object-fit: cover;
-    border-bottom: 1px solid #2a2a2a;
-}
-
-.movie-info {
-    padding: 15px;
-}
-
-.movie-info h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.movie-info span {
-    background-color: #333;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    color: #ffc107;
-}
-
-.loading, .no-results, .error {
-    text-align: center;
-    grid-column: 1 / -1;
-    font-size: 1.2rem;
-    color: #aaa;
-    margin-top: 20px;
-}
-/* DISEÑO DE LA VENTANA FLOTANTE (MODAL) */
-.modal {
-    display: none; /* Por defecto está escondida */
-    position: fixed;
-    z-index: 1000; /* Se asegura de quedar por encima de todo */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con transparencia */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
-}
-
-.modal-content {
-    background-color: #1f1f1f;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 12px;
-    max-width: 600px;
-    width: 90%;
-    position: relative;
-    box-shadow: 0 0 20px rgba(229, 9, 20, 0.3); /* Un leve reflejo rojo */
-    border: 1px solid #333;
-}
-
-.close-button {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.close-button:hover {
-    color: #e50914; /* El botón de cerrar se pone rojo al pasar el mouse */
-}
-
-/* Diseño interno del contenido del resumen */
-#modal-details h2 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 1.8rem;
-}
-
-#modal-details p {
-    color: #ccc;
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-#modal-details .modal-meta {
-    display: flex;
-    gap: 15px;
-    color: #aaa;
-    font-size: 0.9rem;
-}
 /* ==========================================
-   🔐 ESTILOS PARA LA PANTALLA DE LOGIN
+   🔐 PANTALLA DE LOGIN CON NEÓN
    ========================================== */
-
-/* Contenedor que centra el formulario en la pantalla */
 .contenedor-auth {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #121212;
+    background-color: #0b050d;
 }
 
-/* Tarjeta oscura con borde fucsia */
 .tarjeta-auth {
-    background-color: #1a1a1a;
-    padding: 30px;
-    border-radius: 8px;
+    background-color: #140b19;
+    padding: 35px;
+    border-radius: 12px;
     border: 2px solid #ff007f;
     text-align: center;
     width: 90%;
     max-width: 400px;
-    box-shadow: 0px 4px 15px rgba(255, 0, 127, 0.2);
+    /* Brillo Neón Fucsia */
+    box-shadow: 0px 0px 20px #ff007f, inset 0px 0px 10px rgba(255, 0, 127, 0.3);
 }
 
 .tarjeta-auth h2 {
     color: #ff007f;
-    margin-bottom: 10px;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+    margin: 0 0 15px 0;
+    font-size: 26px;
 }
 
 .tarjeta-auth p {
-    color: #aaa;
+    color: #00ffff; /* Subtítulo en cian brillante */
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-/* Cajas de texto para correo y contraseña */
 .tarjeta-auth input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    background-color: #2a2a2a;
-    border: 1px solid #444;
-    color: white;
-    border-radius: 4px;
+    background-color: #22122b;
+    border: 1px solid #ff007f;
+    color: #ffffff;
+    border-radius: 6px;
     box-sizing: border-box;
+    transition: all 0.3s;
 }
 
-/* Botones de ingresar y registrarse */
+.tarjeta-auth input:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
 .botones-auth {
     display: flex;
-    gap: 10px;
-    margin-top: 15px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
 .botones-auth button {
     flex: 1;
 }
 
-/* Botón secundario gris oscuro */
+/* ==========================================
+   🎬 CABECERA Y BUSCADOR NEÓN
+   ========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #140b19;
+    border-bottom: 3px solid #ff007f;
+    box-shadow: 0px 4px 20px rgba(255, 0, 127, 0.4);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff007f;
+    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
+}
+
+.buscador {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.buscador input {
+    flex: 1;
+    padding: 12px;
+    background-color: #22122b;
+    border: 1px solid #ff007f;
+    color: white;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.buscador input:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px #00ffff;
+}
+
+/* Botón Fucsia Neón Principal */
+button {
+    padding: 12px 24px;
+    background-color: #ff007f;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+    text-shadow: 0 0 5px #fff;
+    box-shadow: 0 0 10px #ff007f;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #d00066;
+    box-shadow: 0 0 18px #ff007f;
+    transform: translateY(-1px);
+}
+
+/* Botón Secundario Cian Neón (Para salir o registrarse) */
 .btn-secundario {
-    background-color: #333 !important;
-    border: 1px solid #444 !important;
+    background-color: transparent !important;
+    border: 2px solid #00ffff !important;
+    color: #00ffff !important;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
+    text-shadow: 0 0 5px #00ffff;
 }
 
 .btn-secundario:hover {
-    background-color: #444 !important;
+    background-color: rgba(0, 255, 255, 0.1) !important;
+    box-shadow: 0 0 18px #00ffff !important;
+}
+
+/* ==========================================
+   🍿 CONTENIDO Y CARTELERA REORGANIZADA
+   ========================================== */
+main {
+    padding: 30px 40px;
+}
+
+main h2 {
+    font-size: 24px;
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    margin-bottom: 25px;
+    border-left: 4px solid #ff007f;
+    padding-left: 15px;
+}
+
+.grid-peliculas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px;
+}
+
+.tarjeta-pelicula {
+    background-color: #140b19;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 0, 127, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.7);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-pelicula:hover {
+    transform: scale(1.05) translateY(-5px);
+    border-color: #ff007f;
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.tarjeta-pelicula img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tarjeta-pelicula h3 {
+    font-size: 14px;
+    padding: 14px;
+    margin: 0;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================
+   🎥 MODAL DEL REPRODUCTOR CIBER-PUNK
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 5, 13, 0.95);
+    align-items: center;
+    justify-content: center;
+}
+
+.contenido-modal {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background-color: #140b19;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ff007f;
+    box-shadow: 0 0 25px #ff007f;
+}
+
+#btn-cerrar {
+    position: absolute;
+    top: -45px;
+    right: 0;
+    color: #00ffff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+#btn-cerrar:hover {
+    color: #ff007f;
+    text-shadow: 0 0 10px #ff007f;
+}
+
+.contenedor-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.contenedor-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
