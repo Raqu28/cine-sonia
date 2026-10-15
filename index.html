@@ -7,30 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 🔐 PANTALLA DE LOGIN Y REGISTRO (Se muestra si no has iniciado sesión) -->
-    <div id="seccion-auth" class="contenedor-auth">
-        <div class="tarjeta-auth">
-            <h2>🎬 Bienvenido a CineSonia</h2>
-            <p>Inicia sesión con tu correo para ver películas gratis</p>
-            <input type="email" id="auth-correo" placeholder="Tu correo electrónico" autocomplete="email">
-            <input type="password" id="auth-contrasena" placeholder="Tu contraseña" autocomplete="current-password">
-            <div class="botones-auth">
-                <button id="btn-login">Ingresar</button>
-                <button id="btn-registro" class="btn-secundario">Registrarse</button>
-            </div>
-            <button id="btn-recuperar" class="btn-recuperar" type="button">Olvidé mi contraseña</button>
-        </div>
-    </div>
 
-    <!-- 🍿 SECCIÓN PRINCIPAL DE LA APP (Oculta hasta que inicies sesión) -->
-    <div id="seccion-app" style="display: none;">
+    <!-- 🍿 SECCIÓN PRINCIPAL DE LA APP LIBRE (Entra directo sin pedir nada) -->
+    <div id="seccion-app">
         <header>
             <div class="logo">🍿 CineSonia</div>
             <div class="buscador">
                 <input type="text" id="input-buscar" placeholder="Busca una película...">
                 <button id="btn-buscar">Buscar</button>
             </div>
-            <button id="btn-cerrar-sesion" class="btn-secundario">Salir</button>
         </header>
 
         <main>
@@ -39,7 +24,7 @@
         </main>
     </div>
 
-    <!-- 🎥 VENTANA FLOTANTE DEL REPRODUCTOR -->
+    <!-- 🎥 VENTANA FLOTANTE DEL REPRODUCTOR MULTIMEDIA -->
     <div id="modal-reproductor" class="modal">
         <div class="contenido-modal">
             <span id="btn-cerrar">&times;</span>
@@ -49,7 +34,7 @@
         </div>
     </div>
 
-    <!-- Enlazamos tu archivo JavaScript principal como tipo módulo -->
+    <!-- Enlazamos tu archivo de JavaScript como tipo módulo -->
     <script src="script.js" type="module"></script>
 </body>
 </html>
