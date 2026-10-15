@@ -265,3 +265,42 @@ main h2 {
     height: 100%;
     border: 0;
 }
+
+.error {
+    grid-column: 1 / -1;
+    color: #ff8abf;
+    text-align: center;
+    padding: 24px;
+}
+
+@media (max-width: 700px) {
+    header {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .buscador {
+        order: 1;
+        max-width: none;
+    }
+
+    main {
+        padding: 24px 20px;
+    }
+
+    .grid-peliculas {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    .buscador {
+        flex-direction: column;
+    }
+
+    .buscador button {
+        width: 100%;
+    }
+}

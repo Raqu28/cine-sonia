@@ -1,8 +1,8 @@
-// Tus credenciales y URLs de TMDB corregidas al 100%
+// Credenciales y URLs de TMDB
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
-const URL_POPULARES = `https://themoviedb.org{API_KEY}&language=es-ES&page=1`;
-const URL_BUSCAR = `https://themoviedb.org{API_KEY}&language=es-ES&query=`;
-const URL_IMAGEN = 'https://tmdb.org';
+const URL_POPULARES = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=es-ES&page=1`;
+const URL_BUSCAR = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=es-ES&query=`;
+const URL_IMAGEN = 'https://image.tmdb.org/t/p/w500';
 
 // Elementos de la Interfaz
 const contenedor = document.getElementById('contenedor-peliculas');
@@ -16,10 +16,12 @@ const reproductorDestino = document.getElementById('reproductor-destino');
 async function obtenerPeliculasPopulares() {
     try {
         const respuesta = await fetch(URL_POPULARES);
+        if (!respuesta.ok) throw new Error(`TMDB respondió con estado ${respuesta.status}.`);
         const datos = await respuesta.json();
         mostrarPeliculas(datos.results);
     } catch (error) {
         console.error("Error cargando películas populares:", error);
+        contenedor.innerHTML = '<p class="error">No se pudieron cargar las películas. Inténtalo de nuevo más tarde.</p>';
     }
 }
 
@@ -27,10 +29,12 @@ async function buscarPeliculas(nombrePelicula) {
     if (!nombrePelicula.trim()) return;
     try {
         const respuesta = await fetch(URL_BUSCAR + encodeURIComponent(nombrePelicula));
+        if (!respuesta.ok) throw new Error(`TMDB respondió con estado ${respuesta.status}.`);
         const datos = await respuesta.json();
         mostrarPeliculas(datos.results);
     } catch (error) {
         console.error("Error en la búsqueda:", error);
+        contenedor.innerHTML = '<p class="error">No se pudo completar la búsqueda. Inténtalo de nuevo más tarde.</p>';
     }
 }
 
@@ -41,7 +45,7 @@ function mostrarPeliculas(peliculas) {
         return;
     }
     peliculas.forEach(pelicula => {
-        const rutaImagen = pelicula.poster_path ? (URL_IMAGEN + pelicula.poster_path) : 'https://placeholder.com';
+        const rutaImagen = pelicula.poster_path ? (URL_IMAGEN + pelicula.poster_path) : 'https://placehold.co/500x750?text=Sin+poster';
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('tarjeta-pelicula');
         tarjeta.innerHTML = `
@@ -55,27 +59,28 @@ function mostrarPeliculas(peliculas) {
     });
 }
 
-// 🎥 REPRODUCTOR DE PELÍCULAS COMPLETAS DIRECTO
+// 🎥 REPRODUCTOR DE TRÁILERS
 async function abrirReproductor(peliculaId) {
     try {
-        // Servidor que carga el reproductor de la película usando las comillas invertidas correctas
-        const urlPeliculaCompleta = `https://vidsrc.to{peliculaId}`;
+        const urlVideos = `https://api.themoviedb.org/3/movie/${peliculaId}/videos?api_key=${API_KEY}&language=es-ES`;
+        const respuesta = await fetch(urlVideos);
+        if (!respuesta.ok) throw new Error(`TMDB respondió con estado ${respuesta.status}.`);
+        const datos = await respuesta.json();
+        const video = datos.results.find(resultado => resultado.site === 'YouTube' && resultado.type === 'Trailer')
+            || datos.results.find(resultado => resultado.site === 'YouTube');
 
-        reproductorDestino.innerHTML = `
-            <iframe src="${urlPeliculaCompleta}" 
-                    allowfullscreen 
-                    scrolling="no" 
-                    frameborder="0"
-                    allow="autoplay; encrypted-media"
-                    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: 0;">
-            </iframe>
-        `;
-        
+        if (!video) {
+            alert("No hay un tráiler disponible para esta película en español.");
+            return;
+        }
+
+        reproductorDestino.innerHTML = `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(video.key)}?autoplay=1"
+            title="Tráiler de la película" allowfullscreen allow="autoplay; encrypted-media"
+            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: 0;"></iframe>`;
         modal.style.display = 'flex';
-        
     } catch (error) {
         console.error("Error al abrir el reproductor:", error);
-        alert("Lo sentimos, esta película no se encuentra disponible en este momento.");
+        alert("No se pudo cargar el tráiler. Inténtalo de nuevo más tarde.");
     }
 }
 
