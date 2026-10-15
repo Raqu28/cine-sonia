@@ -214,6 +214,33 @@ main {
     color: #aaa;
 }
 
+.watch-providers {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 0, 127, 0.35);
+}
+
+.watch-providers h3 {
+    margin: 0 0 12px;
+    color: #00ffff;
+}
+
+.watch-providers p,
+.watch-providers li {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.watch-providers ul {
+    padding-left: 22px;
+}
+
+.watch-providers a {
+    display: inline-block;
+    margin-top: 8px;
+    color: #ff8abf;
+}
+
 @media (max-width: 600px) {
     main {
         padding: 24px 16px;
