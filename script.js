@@ -164,25 +164,31 @@ function mostrarPeliculas(peliculas) {
     });
 }
 
+// ==========================================
+// 🎥 REPRODUCTOR DE PELÍCULAS COMPLETAS
+// ==========================================
 async function abrirReproductor(peliculaId) {
     try {
-        const urlVideos = `https://api.themoviedb.org/3/movie/${peliculaId}/videos?api_key=${API_KEY}&language=es-ES`;
-        const respuesta = await fetch(urlVideos);
-        if (!respuesta.ok) throw new Error(`TMDB respondió con estado ${respuesta.status}.`);
-        const datos = await respuesta.json();
-        const video = datos.results.find(v => v.site === 'YouTube');
+        // Conectamos con el servidor que lee el ID de TMDB y carga el reproductor de la película
+        const urlPeliculaCompleta = `https://vidsrc.to{peliculaId}`;
 
-        if (video) {
-            reproductorDestino.innerHTML = `
-                <iframe src="https://www.youtube.com/embed/${encodeURIComponent(video.key)}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            `;
-            modal.style.display = 'flex';
-        } else {
-            alert("No hay un reproductor o trailer disponible para esta película en español.");
-        }
+        // Insertamos el iframe dentro de tu ventana flotante con diseño ciber-punk
+        reproductorDestino.innerHTML = `
+            <iframe src="${urlPeliculaCompleta}" 
+                    allowfullscreen 
+                    scrolling="no" 
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: 0;">
+            </iframe>
+        `;
+        
+        // Abrimos la ventana flotante neón
+        modal.style.display = 'flex';
+        
     } catch (error) {
-        console.error("Error al obtener el video:", error);
-        alert("No se pudo cargar el tráiler. Inténtalo de nuevo más tarde.");
+        console.error("Error al abrir el reproductor:", error);
+        alert("Lo sentimos, esta película no se encuentra disponible en los servidores en este momento.");
     }
 }
 
