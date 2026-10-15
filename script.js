@@ -1,6 +1,6 @@
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
 
-// Direcciones unidas de forma simple para que internet las lea perfecto en Argentina
+// URLs oficiales separadas limpiamente para que no se peguen las palabras
 const API_URL = 'https://themoviedb.org' + API_KEY + '&language=es-MX&page=1';
 const SEARCH_URL = 'https://themoviedb.org' + API_KEY + '&language=es-MX&query=';
 const IMAGE_URL = 'https://tmdb.org';
