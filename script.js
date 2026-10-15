@@ -1,12 +1,12 @@
-// Tu clave API real de la foto que funciona perfectamente
+// Tu clave API real de TMDB funcionando perfectamente
 const API_KEY = 'cc24e25e37b5daf15adee1f81813fb5'; 
 
-// URLs oficiales e independientes con el formato exacto que exige TMDB
+// URLs oficiales exactas de la API
 const URL_POPULARES = `https://themoviedb.org{API_KEY}&language=es-ES&page=1`;
 const URL_BUSCAR = `https://themoviedb.org{API_KEY}&language=es-ES&query=`;
 const URL_IMAGEN = 'https://tmdb.org';
 
-// Elementos de la Interfaz
+// Elementos de la pantalla
 const contenedor = document.getElementById('contenedor-peliculas');
 const inputBuscar = document.getElementById('input-buscar');
 const btnBuscar = document.getElementById('btn-buscar');
@@ -14,17 +14,18 @@ const modal = document.getElementById('modal-reproductor');
 const btnCerrar = document.getElementById('btn-cerrar');
 const reproductorDestino = document.getElementById('reproductor-destino');
 
-// 🎬 CARGA AUTOMÁTICA AL ENTRAR (Público y libre para todos)
+// 🎬 Cargar películas populares al entrar
 async function obtenerPeliculasPopulares() {
     try {
         const respuesta = await fetch(URL_POPULARES);
         const datos = await respuesta.json();
         mostrarPeliculas(datos.results);
     } catch (error) {
-        console.error("Error cargando películas populares:", error);
+        console.error("Error al cargar populares:", error);
     }
 }
 
+// 🔍 Buscar películas
 async function buscarPeliculas(nombrePelicula) {
     if (!nombrePelicula.trim()) return;
     try {
@@ -36,6 +37,7 @@ async function buscarPeliculas(nombrePelicula) {
     }
 }
 
+// 🖼️ Dibujar las películas en pantalla
 function mostrarPeliculas(peliculas) {
     contenedor.innerHTML = '';
     if (!peliculas || peliculas.length === 0) {
@@ -43,16 +45,14 @@ function mostrarPeliculas(peliculas) {
         return;
     }
     peliculas.forEach(pelicula => {
-        const rutaImagen = pelicula.poster_path ? (URL_IMAGEN + pelicula.poster_path) : 'https://placeholder.com';
+        const img = pelicula.poster_path ? (URL_IMAGEN + pelicula.poster_path) : 'https://placeholder.com';
         const tarjeta = document.createElement('div');
         tarjeta.classList.add('tarjeta-pelicula');
         tarjeta.innerHTML = `
-            <img src="${rutaImagen}" alt="${pelicula.title}">
+            <img src="${img}" alt="${pelicula.title}">
             <h3>${pelicula.title}</h3>
         `;
-        tarjeta.addEventListener('click', () => {
-            abrirReproductor(pelicula.id);
-        });
+        tarjeta.addEventListener('click', () => abrirReproductor(pelicula.id));
         contenedor.appendChild(tarjeta);
     });
 }
@@ -61,7 +61,6 @@ function mostrarPeliculas(peliculas) {
 async function abrirReproductor(peliculaId) {
     try {
         const urlPeliculaCompleta = `https://vidsrc.to{peliculaId}`;
-
         reproductorDestino.innerHTML = `
             <iframe src="${urlPeliculaCompleta}" 
                     allowfullscreen 
@@ -71,12 +70,9 @@ async function abrirReproductor(peliculaId) {
                     style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: 0;">
             </iframe>
         `;
-        
         modal.style.display = 'flex';
-        
     } catch (error) {
-        console.error("Error al abrir el reproductor:", error);
-        alert("Lo sentimos, esta película no se encuentra disponible en este momento.");
+        alert("Pelicula no disponible en este momento.");
     }
 }
 
@@ -88,5 +84,5 @@ btnCerrar.addEventListener('click', () => {
 btnBuscar.addEventListener('click', () => buscarPeliculas(inputBuscar.value));
 inputBuscar.addEventListener('keypress', (e) => { if (e.key === 'Enter') buscarPeliculas(inputBuscar.value); });
 
-// 🚀 Arrancar la cartelera de inmediato
+// Arrancar la app de inmediato
 obtenerPeliculasPopulares();

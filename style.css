@@ -1,83 +1,11 @@
-/* ==========================================
-   🍿 ESTILOS GENERALES (FONDO OSCURO INTEGRAL)
-   ========================================== */
 body {
-    background-color: #0b050d; /* Un negro morado muy profundo */
+    background-color: #0b050d;
     color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
-/* ==========================================
-   🔐 PANTALLA DE LOGIN CON NEÓN
-   ========================================== */
-.contenedor-auth {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0b050d;
-}
-
-.tarjeta-auth {
-    background-color: #140b19;
-    padding: 35px;
-    border-radius: 12px;
-    border: 2px solid #ff007f;
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-    /* Brillo Neón Fucsia */
-    box-shadow: 0px 0px 20px #ff007f, inset 0px 0px 10px rgba(255, 0, 127, 0.3);
-}
-
-.tarjeta-auth h2 {
-    color: #ff007f;
-    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
-    margin: 0 0 15px 0;
-    font-size: 26px;
-}
-
-.tarjeta-auth p {
-    color: #00ffff; /* Subtítulo en cian brillante */
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-.tarjeta-auth input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    background-color: #22122b;
-    border: 1px solid #ff007f;
-    color: #ffffff;
-    border-radius: 6px;
-    box-sizing: border-box;
-    transition: all 0.3s;
-}
-
-.tarjeta-auth input:focus {
-    outline: none;
-    border-color: #00ffff;
-    box-shadow: 0 0 10px #00ffff;
-}
-
-.botones-auth {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-}
-
-.botones-auth button {
-    flex: 1;
-}
-
-/* ==========================================
-   🎬 CABECERA Y BUSCADOR NEÓN
-   ========================================== */
 header {
     display: flex;
     justify-content: space-between;
@@ -109,7 +37,6 @@ header {
     border: 1px solid #ff007f;
     color: white;
     border-radius: 6px;
-    transition: all 0.3s;
 }
 
 .buscador input:focus {
@@ -118,7 +45,6 @@ header {
     box-shadow: 0 0 10px #00ffff;
 }
 
-/* Botón Fucsia Neón Principal */
 button {
     padding: 12px 24px;
     background-color: #ff007f;
@@ -127,34 +53,14 @@ button {
     font-weight: bold;
     cursor: pointer;
     border-radius: 6px;
-    text-shadow: 0 0 5px #fff;
     box-shadow: 0 0 10px #ff007f;
     transition: all 0.2s;
 }
 
 button:hover {
-    background-color: #d00066;
     box-shadow: 0 0 18px #ff007f;
-    transform: translateY(-1px);
 }
 
-/* Botón Secundario Cian Neón (Para salir o registrarse) */
-.btn-secundario {
-    background-color: transparent !important;
-    border: 2px solid #00ffff !important;
-    color: #00ffff !important;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3) !important;
-    text-shadow: 0 0 5px #00ffff;
-}
-
-.btn-secundario:hover {
-    background-color: rgba(0, 255, 255, 0.1) !important;
-    box-shadow: 0 0 18px #00ffff !important;
-}
-
-/* ==========================================
-   🍿 CONTENIDO Y CARTELERA REORGANIZADA
-   ========================================== */
 main {
     padding: 30px 40px;
 }
@@ -181,12 +87,11 @@ main h2 {
     text-align: center;
     cursor: pointer;
     border: 1px solid rgba(255, 0, 127, 0.2);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.7);
     transition: all 0.3s ease;
 }
 
 .tarjeta-pelicula:hover {
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.05);
     border-color: #ff007f;
     box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
 }
@@ -194,22 +99,18 @@ main h2 {
 .tarjeta-pelicula img {
     width: 100%;
     height: auto;
-    display: block;
 }
 
 .tarjeta-pelicula h3 {
     font-size: 14px;
     padding: 14px;
     margin: 0;
-    color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* ==========================================
-   🎥 MODAL DEL REPRODUCTOR CIBER-PUNK
-   ========================================== */
+/* MODAL REPRODUCTOR */
 .modal {
     display: none;
     position: fixed;
@@ -242,19 +143,12 @@ main h2 {
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
-    text-shadow: 0 0 10px #00ffff;
-}
-
-#btn-cerrar:hover {
-    color: #ff007f;
-    text-shadow: 0 0 10px #ff007f;
 }
 
 .contenedor-video {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
-    overflow: hidden;
 }
 
 .contenedor-video iframe {
@@ -264,43 +158,4 @@ main h2 {
     width: 100%;
     height: 100%;
     border: 0;
-}
-
-.error {
-    grid-column: 1 / -1;
-    color: #ff8abf;
-    text-align: center;
-    padding: 24px;
-}
-
-@media (max-width: 700px) {
-    header {
-        flex-wrap: wrap;
-        gap: 16px;
-        padding: 20px;
-    }
-
-    .buscador {
-        order: 1;
-        max-width: none;
-    }
-
-    main {
-        padding: 24px 20px;
-    }
-
-    .grid-peliculas {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 18px;
-    }
-}
-
-@media (max-width: 420px) {
-    .buscador {
-        flex-direction: column;
-    }
-
-    .buscador button {
-        width: 100%;
-    }
 }
