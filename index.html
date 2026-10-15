@@ -3,32 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineSonia - Buscador de Películas</title>
+    <title>CineSonia - Tus Películas Gratis</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>🎬 <span class="neon-text">CineSonia</span></h1>
-        <p class="neon-pink">Encuentra tus películas y series favoritas</p>
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Escribe el nombre de una película...">
-            <button id="search-button">Buscar</button>
-        </div>
-    </header>
-
-    <main>
-        <div id="results-container" class="movies-grid"></div>
-    </main>
-        <!-- Ventana Flotante (Modal) para los resúmenes -->
-    <div id="movie-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="modal-details">
-                <!-- Acá el JavaScript va a meter el resumen de forma automática -->
+    <!-- 🔐 PANTALLA DE LOGIN Y REGISTRO (Se muestra si no has iniciado sesión) -->
+    <div id="seccion-auth" class="contenedor-auth">
+        <div class="tarjeta-auth">
+            <h2>🎬 Bienvenido a CineSonia</h2>
+            <p>Inicia sesión con tu correo para ver películas gratis</p>
+            <input type="email" id="auth-correo" placeholder="Tu correo electrónico">
+            <input type="password" id="auth-contrasena" placeholder="Tu contraseña">
+            <div class="botones-auth">
+                <button id="btn-login">Ingresar</button>
+                <button id="btn-registro" class="btn-secundario">Registrarse</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- 🍿 SECCIÓN PRINCIPAL DE LA APP (Oculta hasta que inicies sesión) -->
+    <div id="seccion-app" style="display: none;">
+        <header>
+            <div class="logo">🍿 CineSonia</div>
+            <div class="buscador">
+                <input type="text" id="input-buscar" placeholder="Busca una película...">
+                <button id="btn-buscar">Buscar</button>
+            </div>
+            <button id="btn-cerrar-sesion" class="btn-secundario">Salir</button>
+        </header>
+
+        <main>
+            <h2>Películas Populares</h2>
+            <div id="contenedor-peliculas" class="grid-peliculas"></div>
+        </main>
+    </div>
+
+    <!-- 🎥 VENTANA FLOTANTE DEL REPRODUCTOR -->
+    <div id="modal-reproductor" class="modal">
+        <div class="contenido-modal">
+            <span id="btn-cerrar">&times;</span>
+            <div class="contenedor-video">
+                <div id="reproductor-destino"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlazamos tu archivo JavaScript principal como tipo módulo -->
+    <script src="script.js" type="module"></script>
 </body>
 </html>

@@ -231,3 +231,71 @@ header p {
     color: #aaa;
     font-size: 0.9rem;
 }
+/* ==========================================
+   🔐 ESTILOS PARA LA PANTALLA DE LOGIN
+   ========================================== */
+
+/* Contenedor que centra el formulario en la pantalla */
+.contenedor-auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+}
+
+/* Tarjeta oscura con borde fucsia */
+.tarjeta-auth {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #ff007f;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0px 4px 15px rgba(255, 0, 127, 0.2);
+}
+
+.tarjeta-auth h2 {
+    color: #ff007f;
+    margin-bottom: 10px;
+}
+
+.tarjeta-auth p {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Cajas de texto para correo y contraseña */
+.tarjeta-auth input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Botones de ingresar y registrarse */
+.botones-auth {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.botones-auth button {
+    flex: 1;
+}
+
+/* Botón secundario gris oscuro */
+.btn-secundario {
+    background-color: #333 !important;
+    border: 1px solid #444 !important;
+}
+
+.btn-secundario:hover {
+    background-color: #444 !important;
+}
